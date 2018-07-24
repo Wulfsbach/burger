@@ -1,0 +1,40 @@
+<h1>The Burger Realm</h1>
+
+<h2> Which Burger Will You Eat!?</h2>
+
+
+<ul>
+    {{#each burger}}
+    {{#unless devoured}}
+    {{this.burger}}
+    {{/unless}}
+    {{/each}}
+</ul>
+
+
+<h2> You Have Consumed These Burgers, BEHOLD!</h2>
+
+<ul>
+    {{#each burger}}
+    {{#if devoured}}
+     <form action="/burger/{{this.id}}?_method=PUT" method="POST">
+                <button type="submit" class='burgersDisplay'> {{this.burger_name}}</button>
+</form>
+    {{/if}}
+    {{/each}}
+</ul>
+
+<h2> Add A Burger If You Must</h2>
+<form class="create-form">
+<div class="form group">
+    <label for="Burg"> Burger Type:</label>
+    <input type="text" id="Burg" name="name">
+</div>
+
+<div class ="form-group">
+    <label for="devoured">You Hungry?</label><br>
+    <input type="radio" name="devoured" value="1"> Yes I am Starving <br>
+    <input type="radio" name="devoured" value="0"> No Not Right Now
+    </div>
+<button type="submit"> Add Burger </button>
+</form>
